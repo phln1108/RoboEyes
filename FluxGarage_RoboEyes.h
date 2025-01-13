@@ -1,5 +1,5 @@
 /*
- * FluxGarage RoboEyes for OLED Displays V 1.0-beta
+ * FluxGarage RoboEyes for OLED Displays V 1.0.1
  * Draws smoothly animated robot eyes on OLED displays, based on the Adafruit GFX 
  * library's graphics primitives, such as rounded rectangles and triangles.
  *   
@@ -467,8 +467,13 @@ void drawEyes(){
     if(eyeLxNext<=10){eyeLheightOffset=8;}
     else if (eyeLxNext>=(getScreenConstraint_X()-10) && cyclops){eyeLheightOffset=8;}
     else{eyeLheightOffset=0;} // left eye
-    if(eyeRxNext>=screenWidth-eyeRwidthCurrent-10){eyeRheightOffset=8;}else{eyeRheightOffset=0;} // right eye
+    if(eyeRxNext>=screenWidth-eyeRwidthCurrent-10){eyeRheightOffset=8;}
+    else{eyeRheightOffset=0;} // right eye
+  } else {
+    eyeLheightOffset=0; // reset height offset for left eye
+    eyeRheightOffset=0; // reset height offset for right eye
   }
+
   // Left eye height
   eyeLheightCurrent = (eyeLheightCurrent + eyeLheightNext + eyeLheightOffset)/2;
   eyeLy+= ((eyeLheightDefault-eyeLheightCurrent)/2); // vertical centering of eye when closing
