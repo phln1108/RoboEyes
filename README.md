@@ -1,22 +1,34 @@
 # FluxGarage RoboEyes Library
+A fork of [FluxGarage RoboEyes library](https://github.com/FluxGarage/RoboEyes).
 
+With the purpose to be used on Esp32 with Arduino Framework
+
+## Introduction
 Draws smoothly animated robot eyes on OLED displays, using the Adafruit GFX library. Robot eye shapes are configurable in terms of width, height, border radius and space between. Several different mood expressions (happy, tired, angry, default) and animations (autoblinker, idle, laughing, confused) are available. All state changes have smooth transitions and thus, complex animation sequences are easily feasible.
 
-Developing this library was the first step of a larger project: the creation of my own DIY robot from the design perspective. Check out the [FluxGarage Youtube Channel](https://www.youtube.com/@FluxGarage).
-
-
-## Watch the Demo and Getting Started Videos on Youtube
-
-[![#1 - Smoothly Animated Robot Eyes on OLED Displays with the Robo Eyes Library](https://img.youtube.com/vi/ibSaDEkfUOI/0.jpg)](https://www.youtube.com/watch?v=ibSaDEkfUOI)
-[![#2 - Getting Started With the Free Robo Eyes Arduino Library](https://img.youtube.com/vi/WtLWc5zzrmI/0.jpg)](https://www.youtube.com/watch?v=WtLWc5zzrmI)
-
-
 ## Installation
+### Arduino IDE
+| Step | Instruction |
+|------|-------------|
+| 01   | Choose "Code > Download Zip" |
+| 02   |In the Arduino IDE, navigate to "Sketch > Include Library > Add .ZIP Library" and select the downloaded file |
 
-1. Navigate to [github.com/FluxGarage/RoboEyes](https://github.com/FluxGarage/RoboEyes).
-2. Choose "Code > Download Zip"
-3. In the Arduino IDE, navigate to "Sketch > Include Library > Add .ZIP Library" and select the downloaded file
+### PlatFormIO
+- **Option 1:**
+  | Step | Instruction |
+  |------|-------------|
+  | 01   | Choose "Code > Download Zip" |
+  | 02   | Move the Zip file to your project's lib Folder |
+  | 03   | Unzip it |
+  | 04   | Delete the Zip File |
+  | 05   | Install the dependencies (if not already installed) |
 
+- **Option 2:**
+  | Step | Instruction |
+  |------|-------------|
+  | 01   | Enter into your project's lib directory |
+  | 02   | Clone the repo in there |
+  | 03   | Install the dependencies (if not already installed) |
 
 ## Functions
 
