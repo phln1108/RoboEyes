@@ -28,6 +28,7 @@ static constexpr uint8_t EYE_HEIGHT = 36;
 static constexpr uint8_t EYE_WIDTH = 36;
 static constexpr uint8_t EYE_BORDER_RADIUS = 8;
 static constexpr uint8_t EYE_SPACE_BETWEEN = 10;
+static constexpr uint8_t EYE_OFFSET_CURIOUS = 8;
 
 // For mood type switch
 enum Mood : uint8_t {
@@ -69,7 +70,6 @@ class RoboEyes {
         unsigned int heightDefault;
         unsigned int heightCurrent;  // starts closed
         unsigned int heightNext;
-        unsigned int heightOffset;
 
         // eyey radius
         byte borderRadiusDefault;
@@ -118,46 +118,6 @@ class RoboEyes {
     //*********************************************************************************************
     //  Eyes Geometry
     //*********************************************************************************************
-
-    // EYE LEFT - size and border radius
-    int eyeLwidthDefault = 36;
-    int eyeLheightDefault = 36;
-    int eyeLwidthCurrent = eyeLwidthDefault;
-    int eyeLheightCurrent = 1;  // start with closed eye, otherwise set to eyeLheightDefault
-    int eyeLwidthNext = eyeLwidthDefault;
-    int eyeLheightNext = eyeLheightDefault;
-    int eyeLheightOffset = 0;
-    // Border Radius
-    byte eyeLborderRadiusDefault = 8;
-    byte eyeLborderRadiusCurrent = eyeLborderRadiusDefault;
-    byte eyeLborderRadiusNext = eyeLborderRadiusDefault;
-    // EYE LEFT - Coordinates
-    int eyeLxDefault = ((screenWidth) - (eyeLwidthDefault + spaceBetweenDefault + eyeRwidthDefault)) / 2;
-    int eyeLyDefault = ((screenHeight - eyeLheightDefault) / 2);
-    int eyeLx = eyeLxDefault;
-    int eyeLy = eyeLyDefault;
-    int eyeLxNext = eyeLx;
-    int eyeLyNext = eyeLy;
-
-    // EYE RIGHT - size and border radius
-    int eyeRwidthDefault = eyeLwidthDefault;
-    int eyeRheightDefault = eyeLheightDefault;
-    int eyeRwidthCurrent = eyeRwidthDefault;
-    int eyeRheightCurrent = 1;  // start with closed eye, otherwise set to eyeRheightDefault
-    int eyeRwidthNext = eyeRwidthDefault;
-    int eyeRheightNext = eyeRheightDefault;
-    int eyeRheightOffset = 0;
-    // Border Radius
-    byte eyeRborderRadiusDefault = 8;
-    byte eyeRborderRadiusCurrent = eyeRborderRadiusDefault;
-    byte eyeRborderRadiusNext = eyeRborderRadiusDefault;
-    // EYE RIGHT - Coordinates
-    int eyeRxDefault = eyeLx + eyeLwidthCurrent + spaceBetweenDefault;
-    int eyeRyDefault = eyeLy;
-    int eyeRx = eyeRxDefault;
-    int eyeRy = eyeRyDefault;
-    int eyeRxNext = eyeRx;
-    int eyeRyNext = eyeRy;
 
     // BOTH EYES
     // Eyelid top size

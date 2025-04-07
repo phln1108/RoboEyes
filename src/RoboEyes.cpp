@@ -22,7 +22,6 @@ RoboEyes::RoboEyes(int width, int height, byte frameRate, Adafruit_SSD1306* oled
         .heightDefault = EYE_HEIGHT,
         .heightCurrent = 1,  // Start closed
         .heightNext = EYE_HEIGHT,
-        .heightOffset = 0,
         // Border radius
         .borderRadiusDefault = EYE_BORDER_RADIUS,
         .borderRadiusCurrent = EYE_BORDER_RADIUS,
@@ -45,7 +44,6 @@ RoboEyes::RoboEyes(int width, int height, byte frameRate, Adafruit_SSD1306* oled
         .heightDefault = EYE_HEIGHT,
         .heightCurrent = 1,  // Start closed
         .heightNext = EYE_HEIGHT,
-        .heightOffset = 0,
         // order radius
         .borderRadiusDefault = EYE_BORDER_RADIUS,
         .borderRadiusCurrent = EYE_BORDER_RADIUS,
@@ -388,41 +386,39 @@ void RoboEyes::drawEyes() {
     //// PRE-CALCULATIONS - EYE SIZES AND VALUES FOR ANIMATION TWEENINGS ////
 
     // Vertical size offset for larger eyes when looking left or right (curious gaze)
+    unsigned int heighOffsetL = 0;
+    unsigned int heighOffsetR = 0;
+
     if (curious) {
         if (eyeL.xNext <= 10) {
-            eyeL.heightOffset = 8;
-            // } else if (eyeL.xNext >= (getScreenConstraint_X() - 10) && cyclops) {
-            //     eyeL.heightOffset = 8;
+            heighOffsetL = EYE_OFFSET_CURIOUS;
         } else {
-            eyeL.heightOffset = 0;
+            heighOffsetL = 0;
         }  // left eye
 
         if (eyeR.xNext >= screenWidth - eyeR.widthCurrent - 10) {
-            eyeR.heightOffset = 8;
+            heighOffsetR = EYE_OFFSET_CURIOUS;
         } else {
-            eyeR.heightOffset = 0;
+            heighOffsetR = 0;
         }  // right eye
-    } else {
-        eyeL.heightOffset = 0;  // reset height offset for left eye
-        eyeR.heightOffset = 0;  // reset height offset for right eye
     }
 
     // Left eye height
-    eyeL.heightCurrent = (eyeL.heightCurrent + eyeL.heightNext + eyeL.heightOffset) / 2;
-    eyeL.y = ((screenHeight - eyeL.heightDefault) / 2) - eyeL.heightOffset;
+    eyeL.heightCurrent = (eyeL.heightCurrent + eyeL.heightNext + heighOffsetL) / 2;
+    eyeL.y = ((screenHeight - eyeL.heightDefault) / 2) - heighOffsetL;
 
     // Right eye height
-    eyeR.heightCurrent = (eyeR.heightCurrent + eyeR.heightNext + eyeR.heightOffset) / 2;
-    eyeR.y = ((screenHeight - eyeR.heightDefault) / 2) - eyeR.heightOffset;
+    eyeR.heightCurrent = (eyeR.heightCurrent + eyeR.heightNext + heighOffsetR) / 2;
+    eyeR.y = ((screenHeight - eyeR.heightDefault) / 2) - heighOffsetR;
 
     // Open eyes again after closing them
     if (eyeL_open) {
-        if (eyeL.heightCurrent <= 1 + eyeL.heightOffset) {
+        if (eyeL.heightCurrent <= 1 + heighOffsetL) {
             eyeL.heightNext = eyeL.heightDefault;
         }
     }
     if (eyeR_open) {
-        if (eyeR.heightCurrent <= 1 + eyeR.heightOffset) {
+        if (eyeR.heightCurrent <= 1 + heighOffsetR) {
             eyeR.heightNext = eyeR.heightDefault;
         }
     }
